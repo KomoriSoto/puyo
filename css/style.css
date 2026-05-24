@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: url('background.png') center center / cover no-repeat;
+    background: url('../assets/images/background.png') center center / cover no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
     display: flex;
@@ -14,6 +14,8 @@ body {
     align-items: center;
     overflow: hidden;
 }
+
+/* ===== レイアウト ===== */
 
 .game-container {
     display: flex;
@@ -37,7 +39,7 @@ body {
 
 .board-container {
     display: flex;
-    gap: 0px;
+    gap: 0;
     align-items: flex-start;
 }
 
@@ -52,9 +54,11 @@ body {
 .next-side-container {
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
     padding-top: 20px;
 }
+
+/* ===== プレイヤーボード装飾 ===== */
 
 .player1-board {
     position: relative;
@@ -82,14 +86,12 @@ body {
     z-index: -1;
 }
 
+/* ===== ネクスト表示 ===== */
+
 .next-puyo-display {
     border-radius: 10px;
     text-align: center;
     min-width: 60px;
-}
-
-.next-side-container .next-puyo-display:first-child {
-    margin-bottom: 0px;
 }
 
 .next-side-container .next-puyo-display:last-child {
@@ -97,33 +99,27 @@ body {
 }
 
 .player2-board .next-side-container .next-puyo-display:last-child {
-    margin-right: 0px;
+    margin-right: 0;
     margin-left: 50px;
 }
 
-.next-label {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-    font-size: 12px;
-}
+/* ===== キャンバス ===== */
 
 canvas {
     border: 3px solid #333;
     border-radius: 10px;
     background-color: #3A2C84;
-    background-image: url('icon.png');
+    background-image: url('../assets/images/icon.png');
     background-position: center center;
     background-size: 120%;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
     opacity: 0.8;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
 .player2-board canvas {
-    background-image: url('icon2.png');
+    background-image: url('../assets/images/icon2.png');
 }
 
 #board1, #board2 {
@@ -138,6 +134,8 @@ canvas {
     width: 60px;
     height: 100px;
 }
+
+/* ===== おじゃまぷよ表示 ===== */
 
 .ojama-indicator {
     background: rgba(255, 100, 100, 0.9);
@@ -158,12 +156,8 @@ canvas {
 }
 
 @keyframes blink {
-    from {
-        opacity: 0.7;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0.7; }
+    to   { opacity: 1.0; }
 }
 
 .ojama-text {
@@ -173,6 +167,8 @@ canvas {
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
+
+/* ===== スコア ===== */
 
 .score-display {
     background: #1B1526;
@@ -192,6 +188,8 @@ canvas {
     letter-spacing: 2px;
 }
 
+/* ===== 中央エリア ===== */
+
 .center-area {
     margin-top: 125px;
     display: flex;
@@ -210,42 +208,12 @@ canvas {
     animation: pulse 2s infinite;
 }
 
-.win-indicator {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 32px;
-    font-weight: bold;
-    background: #1B1526;
-}
-
-.win-label {
-    color: #9DDCFF;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    font-size: 28px;
-}
-
-.win-stars {
-    font-size: 36px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-#player1Stars {
-    color: #9DDCFF;
-}
-
-#player2Stars {
-    color: #9DDCFF;
-}
-
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.1); }
 }
+
+/* ===== スタートボタン ===== */
 
 .start-button {
     padding: 15px 30px;
@@ -269,38 +237,7 @@ canvas {
     transform: translateY(0);
 }
 
-.game-over {
-    /* font-size: 32px; */
-    font-weight: bold;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.hidden {
-    display: none;
-}
-
-.controls {
-    background: rgba(33, 24, 45, 0.7);
-    padding: 15px 30px;
-    border-radius: 10px;
-    text-align: center;
-}
+/* ===== 難易度選択 ===== */
 
 .difficulty-selector {
     background: rgba(33, 24, 45, 0.7);
@@ -342,18 +279,84 @@ canvas {
     color: #FFD700;
 }
 
-.control-info {
+/* ===== 操作方法 ===== */
+
+.controls {
+    background: rgba(33, 24, 45, 0.7);
+    padding: 15px 30px;
+    border-radius: 10px;
     text-align: center;
+}
+
+.control-info {
     color: #D7A5FF;
     font-weight: bold;
 }
+
+.control-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #D7A5FF;
+}
+
+.control-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.control-table th,
+.control-table td {
+    padding: 4px 8px;
+    color: #D7A5FF;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.control-table th {
+    font-weight: bold;
+    text-align: left;
+}
+
+kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #1B1526;
+    background: #D7A5FF;
+    border-radius: 4px;
+    border: 1px solid #9E4AFF;
+}
+
+/* ===== ゲームオーバーメッセージ ===== */
+
+.game-over {
+    font-weight: bold;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1.0); }
+}
+
+.hidden {
+    display: none;
+}
+
+/* ===== フッター（プレイヤー情報・勝利数） ===== */
 
 .game-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 900px;
-    padding: 5px 5px;
+    padding: 5px;
     background: #1B1526;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(158, 74, 255, 0.3);
@@ -368,16 +371,7 @@ canvas {
     color: #9DDCFF;
 }
 
-.player1-info {
-    color: #9DDCFF;
-}
-
-.player2-info {
-    color: #9DDCFF;
-}
-
 .player-icon {
-    font-size: 48px;
     width: 48px;
     height: 48px;
     object-fit: contain;
@@ -395,35 +389,23 @@ canvas {
     color: #D7A5FF;
 }
 
-.win-count {
-    font-size: 16px;
-    color: #FFD700;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+.win-indicator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 32px;
+    font-weight: bold;
+    background: #1B1526;
 }
 
-/* 雲のデコレーション */
-body::before,
-body::after {
-    content: '';
-    position: absolute;
-    background: white;
-    border-radius: 100px;
-    opacity: 0.7;
-    display: none;
+.win-label {
+    color: #9DDCFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 28px;
 }
 
-body::before {
-    width: 100px;
-    height: 50px;
-    top: 50px;
-    left: 100px;
-    box-shadow: 120px 0 0 -10px white, 60px 10px 0 -5px white;
-}
-
-body::after {
-    width: 120px;
-    height: 60px;
-    top: 100px;
-    right: 150px;
-    box-shadow: 140px 0 0 -15px white, 70px 15px 0 -8px white;
+.win-stars {
+    font-size: 36px;
+    color: #9DDCFF;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
